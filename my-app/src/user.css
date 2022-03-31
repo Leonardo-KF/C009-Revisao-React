@@ -1,0 +1,8 @@
+.card-user {
+  display: flex;
+  background-color: #5c646b;
+  flex-direction: column;
+  border: 2px solid #46bed9;
+  border-radius: 15px;
+  margin: 15px 20px;
+}
