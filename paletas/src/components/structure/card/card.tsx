@@ -1,19 +1,20 @@
 import React from 'react';
-import { CardDiv } from "./styled";
+import { CardDiv, PriceText, DescriptionText, Buttons } from "./styled";
 
 
-export function Card () {
+export function Card (props: any) {
     return(  
         <CardDiv>
             <div>
-                <h3>R$ 10.00</h3>
-                <h3>Descrição da paleta</h3>
+                <img src={props.imagem} alt={props.moreInfos.titulo}></img>
             </div>
             <div>
-                <img src="./images/coco.png" alt="Imagem da paleta de cocô"></img>
+                <PriceText>R$ 10.00</PriceText>
+                <DescriptionText>{props.descricao}</DescriptionText>
             </div>
             <div>
-                <button className="btn-adicionar">Adicionar</button>
+                <Buttons primary={false}>Adicionar</Buttons>
+                <Buttons primary={true}>Remover</Buttons>
             </div>
         </CardDiv>
     )
