@@ -42,3 +42,13 @@ export const Buttons = styled.button<Primary>`
   padding: 7px 3px;
   margin: 5px;
 `;
+
+export const NumberDiv = styled.div`
+  display: flex;
+  justify-content: start;
+  width: 100%;
+`;
+
+export const NumberElement = styled.h2`
+  color: lightskyblue;
+`;
