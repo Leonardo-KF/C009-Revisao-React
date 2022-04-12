@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Header } from "../../components/shared/header";
-import { Footer } from "../../components/shared/footer/footer";
 import { Card } from "../../components/structure/card/card";
 import { HomeDiv, InvisibleButton } from "./style";
 import { paletaApi } from "../../services/paletaApi";
@@ -48,7 +46,7 @@ export function Home() {
 
   return (
     <>
-      <Header/>
+      
       <HomeDiv>
         {paletas?.map(paleta => {
           return (
@@ -78,7 +76,7 @@ export function Home() {
         : null
       
       } 
-      <Footer/>
+     
     </>
   );
 }

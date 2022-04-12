@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Home } from './pages/home/Home';
+import { CreatedForm } from "./pages/createdForm/CreatedForm";
+import { Footer } from "./components/shared/footer/footer";
+import { Header } from "./components/shared/header";
 import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter,
@@ -12,11 +15,14 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 ReactDOM.render(
   <React.StrictMode>
+    <Header/>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/create" element={<CreatedForm />} />
       </Routes>
     </BrowserRouter>
+    <Footer/>
   </React.StrictMode>,
   document.getElementById('root')
 );
