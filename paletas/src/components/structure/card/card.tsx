@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { CardDiv, PriceText, DescriptionText, Buttons, NumberDiv, NumberElement } from "./styled";
+import { Link } from "react-router-dom";
 
 type PropsPaleta = {
+    id: string,
     descricao: string,
     imagem: string,
     moreInfos: {
@@ -28,13 +30,16 @@ export function Card (props: PropsPaleta) {
         
             <CardDiv>
                 <NumberDiv><NumberElement>{paletaAdicionada}</NumberElement></NumberDiv>
-                <div>
-                    <img src={props.imagem} alt={props.moreInfos.titulo}></img>
-                </div>
-                <div>
-                    <PriceText>R$ {props.price.toFixed(2)}</PriceText>
-                    <DescriptionText>{props.descricao}</DescriptionText>
-                </div>
+                <Link to={"/update/" + props.id} >
+                    <div>
+                        <img src={props.imagem} alt={props.moreInfos.titulo}></img>
+                    </div>
+                    
+                    <div>
+                        <PriceText>R$ {props.price.toFixed(2)}</PriceText>
+                        <DescriptionText>{props.descricao}</DescriptionText>
+                    </div>
+                </Link>
                 <div> 
                     { paletaAdicionada > 0 ?
                     <>

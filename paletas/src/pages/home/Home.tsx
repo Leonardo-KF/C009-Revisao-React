@@ -52,6 +52,7 @@ export function Home() {
           return (
           <InvisibleButton onClick={modalControl} key={paleta._id}>
             <Card 
+            id={paleta._id}
             descricao={paleta.descricao}
             imagem={paleta.foto}
             moreInfos={paleta.moreInfos}

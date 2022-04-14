@@ -28,7 +28,7 @@ export const paletaApi = {
   postPaleta: async (paleta: Paleta) => {
     try {
       const req = await axios.post("/paletas/create-paleta", paleta);
-      return req.data;
+      return req;
     } catch (err) {
       alert(err);
     }
@@ -38,6 +38,18 @@ export const paletaApi = {
     try {
       const req = await axios.get("/paletas/one-paleta/" + id);
       return req.data;
+    } catch (err) {
+      alert(err);
+    }
+  },
+
+  updatePaletaById: async (id: string, updatedPaleta: Paleta) => {
+    try {
+      const req = await axios.put(
+        "/paletas/update-paleta/" + id,
+        updatedPaleta
+      );
+      return req;
     } catch (err) {
       alert(err);
     }
