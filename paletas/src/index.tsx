@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Home } from './pages/home/Home';
 import { CreatedForm } from "./pages/createdForm/CreatedForm";
 import { Footer } from "./components/shared/footer/footer";
-import { Header } from "./components/shared/header";
+import { Header } from "./components/shared/header/header";
 import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter,
@@ -15,15 +15,15 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header/>
     <BrowserRouter>
+    <Header/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<CreatedForm />} />
         <Route path="/update/:id" element={<CreatedForm update={true} />} />
       </Routes>
-    </BrowserRouter>
     <Footer/>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

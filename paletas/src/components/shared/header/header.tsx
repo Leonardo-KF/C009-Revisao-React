@@ -1,18 +1,17 @@
 import React from 'react';
-import styled from "styled-components";
+import { Link } from "react-router-dom"
+import "./style.css";
 
-const Title = styled.a `
-    color: #ffff;
-    font-size: 2em;
-    text-decoration: none;
-`
 
 
 export function Header () {
+
+
     return (
         <nav className="navbar navbar-light bg-dark">
             <div className="container-fluid">
-                <Title>Blueletas</Title>
+                <Link className="text-header" to="/">Blueletas</Link>
+                <Link className="text-header" to="/create">Cadastrar Paleta</Link>
                 <form className="d-flex">
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                     <button className="btn btn-outline-success" type="submit">Search</button>

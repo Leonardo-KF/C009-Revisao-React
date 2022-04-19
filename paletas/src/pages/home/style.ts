@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HomeDiv = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 107px);
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;

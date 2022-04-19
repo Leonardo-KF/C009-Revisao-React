@@ -1,0 +1,12 @@
+.text-header {
+    color: #ffff;
+    font-size: 2em;
+    text-decoration: none;
+}
+
+.text-header:hover {
+    color:rgb(169, 253, 91);
+        cursor: pointer;
+        transition: all 400ms ease;
+        transform: scale(1.02);
+}

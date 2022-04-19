@@ -54,4 +54,13 @@ export const paletaApi = {
       alert(err);
     }
   },
+
+  deletePaleta: async (id: string) => {
+    try {
+      const req = await axios.delete("/paletas/delete-paleta/" + id);
+      return req;
+    } catch (err) {
+      alert(err);
+    }
+  },
 };

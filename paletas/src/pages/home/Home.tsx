@@ -24,7 +24,7 @@ export function Home() {
   async function getPaletas() {
 
     const req = await paletaApi.getPaletas();
-    
+    console.log(req);
     setPaletas(req)
   }
 
@@ -50,7 +50,7 @@ export function Home() {
       <HomeDiv>
         {paletas?.map(paleta => {
           return (
-          <InvisibleButton onClick={modalControl} key={paleta._id}>
+          
             <Card 
             id={paleta._id}
             descricao={paleta.descricao}
@@ -58,7 +58,7 @@ export function Home() {
             moreInfos={paleta.moreInfos}
             price={paleta.preco}
             />
-          </InvisibleButton>
+         
           )
         })}
       </HomeDiv>
