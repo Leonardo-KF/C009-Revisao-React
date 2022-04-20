@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Card } from "../../components/structure/card/card";
 import { HomeDiv, InvisibleButton } from "./style";
 import { paletaApi } from "../../services/paletaApi";
+import { useSearch } from "../../hooks/useSearch";
+import { useLocalStorage } from 'react-use';
 import "./Style.css";
 
 type Paleta = {
@@ -18,39 +20,32 @@ type Paleta = {
 // desing pattern: Factory
 
 export function Home() {
+
+  const [value, setValue, remove] = useLocalStorage<Paleta[]>('paletas');
   const [paletas, setPaletas] = useState<Paleta[]>();
-  const [openModal, setOpenModal] = useState<boolean>(false);
+  const {search} = useSearch();
+  
 
   async function getPaletas() {
-
     const req = await paletaApi.getPaletas();
-    console.log(req);
-    setPaletas(req)
+    setPaletas(req);
   }
 
-  function modalControl(){
-    console.log(openModal);
-    if (openModal === false) {
-        setOpenModal(true);
-    } else {
-        setOpenModal(false);
-    }
-}
+  console.log(value);
 
   useEffect(() => {
     getPaletas();
+    
   }, []);
   
-  console.log(paletas);
 
 
   return (
     <>
       
       <HomeDiv>
-        {paletas?.map(paleta => {
+        {paletas?.filter((Paleta) => Paleta.moreInfos.titulo.toLowerCase().includes(search.toLowerCase())).map(paleta => {
           return (
-          
             <Card 
             id={paleta._id}
             descricao={paleta.descricao}
@@ -58,26 +53,9 @@ export function Home() {
             moreInfos={paleta.moreInfos}
             price={paleta.preco}
             />
-         
           )
         })}
       </HomeDiv>
-      {openModal ?
-      <div className="container">
-        <div className="modal-dialog modal-dialog-centered modal-app">
-          <div className="modal-card">
-            <div>foto</div>
-            <div>recheio</div>
-            <div>preco</div>
-            <div>descricao</div>
-            
-          </div>
-        </div> 
-      </div>
-        : null
-      
-      } 
-     
     </>
   );
 }

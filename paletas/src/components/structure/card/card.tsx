@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import { BsPencilSquare } from "react-icons/bs";
 import { AiOutlineCloseCircle} from "react-icons/ai";
 import { paletaApi } from "../../../services/paletaApi";
+import { useLocalStorage } from 'react-use';
 
 
 type PropsPaleta = {
@@ -19,6 +20,9 @@ type PropsPaleta = {
 
 
 export function Card (props: PropsPaleta) {
+
+    const [value, setValue, remove] = useLocalStorage('paletas');
+    
     
     const navigate = useNavigate();
 
@@ -47,9 +51,10 @@ export function Card (props: PropsPaleta) {
 
     async function deletePaleta() {
         try { 
-        const req = await paletaApi.deletePaleta(props.id);
-        console.log(req);
-        closeModal()
+            const req = await paletaApi.deletePaleta(props.id);
+            const paletas = await paletaApi.getPaletas();
+            setValue(paletas);
+            closeModal();
         } catch (err) {
             alert(err);
         }

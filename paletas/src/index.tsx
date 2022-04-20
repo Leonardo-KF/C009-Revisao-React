@@ -4,6 +4,7 @@ import { Home } from './pages/home/Home';
 import { CreatedForm } from "./pages/createdForm/CreatedForm";
 import { Footer } from "./components/shared/footer/footer";
 import { Header } from "./components/shared/header/header";
+import { SearchContextProvider } from "./context/searchContext";
 import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter,
@@ -15,15 +16,17 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <Header/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/create" element={<CreatedForm />} />
-        <Route path="/update/:id" element={<CreatedForm update={true} />} />
-      </Routes>
-    <Footer/>
-    </BrowserRouter>
+    <SearchContextProvider>
+      <BrowserRouter>
+        <Header/>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/create" element={<CreatedForm />} />
+            <Route path="/update/:id" element={<CreatedForm update={true} />} />
+          </Routes>
+        <Footer/>
+      </BrowserRouter>
+    </SearchContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
